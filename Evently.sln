@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{015F7BAA-1970-4527-ABAF-6ACC01492C14}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E806A510-16C4-492E-A8AE-F0DDCB2E5CD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{C3C01247-E98A-489F-B15F-FD927B972138}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Api", "src\API\Evently.Api\Evently.Api.csproj", "{EEB9802E-2730-428E-A0C4-B5BF5E251D79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{DE29C3D7-DB67-4920-9A89-BE734DF9B99C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Events", "Events", "{12659DEA-DE36-4EEE-B0F8-5A5480FA9CC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Events.Api", "src\Modules\Events\Evently.Modules.Events.Api\Evently.Modules.Events.Api.csproj", "{10FFBBA3-2741-4FDA-9E70-48B5E5B0787D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEB9802E-2730-428E-A0C4-B5BF5E251D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB9802E-2730-428E-A0C4-B5BF5E251D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB9802E-2730-428E-A0C4-B5BF5E251D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB9802E-2730-428E-A0C4-B5BF5E251D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10FFBBA3-2741-4FDA-9E70-48B5E5B0787D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10FFBBA3-2741-4FDA-9E70-48B5E5B0787D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10FFBBA3-2741-4FDA-9E70-48B5E5B0787D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10FFBBA3-2741-4FDA-9E70-48B5E5B0787D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C3C01247-E98A-489F-B15F-FD927B972138} = {E806A510-16C4-492E-A8AE-F0DDCB2E5CD3}
+		{EEB9802E-2730-428E-A0C4-B5BF5E251D79} = {C3C01247-E98A-489F-B15F-FD927B972138}
+		{DE29C3D7-DB67-4920-9A89-BE734DF9B99C} = {E806A510-16C4-492E-A8AE-F0DDCB2E5CD3}
+		{12659DEA-DE36-4EEE-B0F8-5A5480FA9CC9} = {DE29C3D7-DB67-4920-9A89-BE734DF9B99C}
+		{10FFBBA3-2741-4FDA-9E70-48B5E5B0787D} = {12659DEA-DE36-4EEE-B0F8-5A5480FA9CC9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0A20035-C970-4A92-AF4B-386B68D38A96}
+	EndGlobalSection
+EndGlobal
