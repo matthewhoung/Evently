@@ -1,5 +1,7 @@
-﻿using Evently.Modules.Events.Application.Abstractions.Data;
+﻿using Evently.Modules.Events.Application.Abstractions.Clock;
+using Evently.Modules.Events.Application.Abstractions.Data;
 using Evently.Modules.Events.Domain.Events;
+using Evently.Modules.Events.Infrastructure.Clock;
 using Evently.Modules.Events.Infrastructure.Data;
 using Evently.Modules.Events.Infrastructure.Database;
 using Evently.Modules.Events.Infrastructure.Events;
@@ -51,6 +53,8 @@ public static class EventsModule
         services.TryAddSingleton(npgsqlDataSource);
         // Register IDbConnectionFactory for Dapper
         services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
+
+        services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         services.AddDbContext<EventsDbContext>(options =>
             options
