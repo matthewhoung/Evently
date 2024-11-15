@@ -1,19 +1,21 @@
-﻿using FluentValidation;
-using MediatR;
+﻿using Evently.Modules.Events.Application.Abstractions.Messaging;
+using FluentValidation;
 
 namespace Evently.Modules.Events.Application.Events.CreateEvent;
 
 public sealed record CreateEventCommand(
+    Guid CategoryId,
     string Title,
     string Description,
     string Location,
     DateTime StartsAtUtc,
-    DateTime? EndsAtUtc) : IRequest<Guid>;
+    DateTime? EndsAtUtc) : ICommand<Guid>;
 
 internal sealed class CreateEventCommandValidator : AbstractValidator<CreateEventCommand>
 {
     public CreateEventCommandValidator()
     {
+        RuleFor(c => c.CategoryId).NotEmpty();
         RuleFor(x => x.Title).NotEmpty();
         RuleFor(x => x.Description).NotEmpty();
         RuleFor(x => x.Location).NotEmpty();
