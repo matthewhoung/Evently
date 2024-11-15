@@ -1,10 +1,8 @@
-﻿using Evently.Modules.Events.Api.Database;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
 
-namespace Evently.Modules.Events.Api.Events;
+namespace Evently.Modules.Events.Application.Events;
+
+public sealed record GetEventQuery(Guid EventId) : IRequest<EventResponse?>;
 public static class GetEvent
 {
     public static void MapEndpoint(IEndpointRouteBuilder app)
@@ -30,12 +28,3 @@ public static class GetEvent
             .WithTags(Tags.Events);
     }
 }
-
-public sealed record EventResponse(
-    Guid Id,
-    string Title,
-    string Description,
-    string Location,
-    DateTime StartsAtUtc,
-    DateTime? EndsAtUtc
-);

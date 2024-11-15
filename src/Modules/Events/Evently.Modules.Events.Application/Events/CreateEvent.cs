@@ -1,10 +1,6 @@
-﻿using Evently.Modules.Events.Api.Database;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
+﻿using MediatR;
 
-namespace Evently.Modules.Events.Api.Events;
+namespace Evently.Modules.Events.Application.Events;
 
 public sealed record CreateEventCommand(
     string Title,
