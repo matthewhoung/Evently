@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Evently.Modules.Events.Api.Events;
-internal class CreateEvent
+public static class CreateEvent
 {
     public static void MapEndpoint(IEndpointRouteBuilder app)
     {
@@ -29,7 +29,7 @@ internal class CreateEvent
             .WithTags(Tags.Events);
     }
 
-    internal class Request
+    internal sealed class Request
     {
         public string Title { get; set; }
         public string Description { get; set; }

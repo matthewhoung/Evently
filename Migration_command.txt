@@ -1,0 +1,4 @@
+#1. Set Start up project as Evently.Api
+#2. Set Evently.Modules.Events.Api as stat up in nuget manager console
+
+Add-Migration Create_Database -Context EventsDbContext -o Database/Migrations
