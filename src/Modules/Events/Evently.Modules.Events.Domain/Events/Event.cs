@@ -1,4 +1,4 @@
-﻿namespace Evently.Modules.Events.Api.Events;
+﻿namespace Evently.Modules.Events.Domain.Events;
 
 public sealed class Event
 {
@@ -9,12 +9,4 @@ public sealed class Event
     public DateTime StartsAtUtc { get; set; }
     public DateTime? EndsAtUtc { get; set; }
     public EventStatus Status { get; set; }
-}
-
-public enum EventStatus
-{
-    Draft,
-    Published,
-    Completed,
-    Cancelled
 }
