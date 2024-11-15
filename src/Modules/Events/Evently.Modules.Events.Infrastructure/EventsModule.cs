@@ -1,5 +1,5 @@
 ﻿using Evently.Modules.Events.Api.Database;
-using Evently.Modules.Events.Api.Events;
+using Evently.Modules.Events.Presentation.Events;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -11,10 +11,9 @@ public static class EventsModule
 {
     public static void MapEndpoints(IEndpointRouteBuilder app)
     {
-        // can create a static method within the same Event class to group these together
-        // then map the grouped endpoints here
-        CreateEvent.MapEndpoint(app);
-        GetEvent.MapEndpoint(app);
+        // Register endpoints within EventsEndpoints
+        // injected into the app
+        EventsEndpoints.MapEndpoints(app);
     }
 
     public static IServiceCollection AddEventsModule(

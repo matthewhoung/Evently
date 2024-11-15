@@ -1,11 +1,10 @@
 ﻿using Evently.Modules.Events.Application.Events;
-using Evently.Modules.Events.Presentation;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-namespace Evently.Modules.Events.Api.Events;
+namespace Evently.Modules.Events.Presentation.Events;
 public static class CreateEvent
 {
     public static void MapEndpoint(IEndpointRouteBuilder app)
