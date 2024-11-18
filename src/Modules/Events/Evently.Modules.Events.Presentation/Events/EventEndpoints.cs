@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Routing;
 
 namespace Evently.Modules.Events.Presentation.Events;
-public static class EventsEndpoints
+public static class EventEndpoints
 {
     // Register endpoints within EventsEndpoints
     public static void MapEndpoints(IEndpointRouteBuilder app)
