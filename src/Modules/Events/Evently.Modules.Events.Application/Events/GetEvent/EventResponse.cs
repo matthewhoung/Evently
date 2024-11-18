@@ -2,6 +2,7 @@
 
 public sealed record EventResponse(
     Guid Id,
+    Guid CategoryId,
     string Title,
     string Description,
     string Location,
@@ -15,5 +16,5 @@ public sealed record TicketTypeResponse(
     Guid TicketTypeId,
     string Name,
     decimal Price,
-    string Curreny,
+    string Currency,
     decimal Quantity);
