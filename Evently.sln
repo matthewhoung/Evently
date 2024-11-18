@@ -21,13 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Events", "Events", "{12659D
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BC42CC37-59C8-4916-A846-E5BFE0C893A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Events.Domain", "src\Modules\Events\Evently.Modules.Events.Domain\Evently.Modules.Events.Domain.csproj", "{1CCA4C87-C4FA-4068-9988-B3A32882CBD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Modules.Events.Domain", "src\Modules\Events\Evently.Modules.Events.Domain\Evently.Modules.Events.Domain.csproj", "{1CCA4C87-C4FA-4068-9988-B3A32882CBD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Events.Application", "src\Modules\Events\Evently.Modules.Events.Application\Evently.Modules.Events.Application.csproj", "{D97BD7BC-C050-4D35-82D5-93D3F063F44E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Modules.Events.Application", "src\Modules\Events\Evently.Modules.Events.Application\Evently.Modules.Events.Application.csproj", "{D97BD7BC-C050-4D35-82D5-93D3F063F44E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Events.Infrastructure", "src\Modules\Events\Evently.Modules.Events.Infrastructure\Evently.Modules.Events.Infrastructure.csproj", "{0DEDF183-892E-4D0F-B5DA-A919C732AF07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Modules.Events.Infrastructure", "src\Modules\Events\Evently.Modules.Events.Infrastructure\Evently.Modules.Events.Infrastructure.csproj", "{0DEDF183-892E-4D0F-B5DA-A919C732AF07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Events.Presentation", "Evently.Modules.Events.Presentation\Evently.Modules.Events.Presentation.csproj", "{50442357-EF99-4277-9104-FE5B2E2F4826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evently.Modules.Events.Presentation", "src\Modules\Events\Evently.Modules.Events.Presentation\Evently.Modules.Events.Presentation.csproj", "{4BD0DA0E-27C3-4D9D-A004-35E2747423E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +55,10 @@ Global
 		{0DEDF183-892E-4D0F-B5DA-A919C732AF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DEDF183-892E-4D0F-B5DA-A919C732AF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DEDF183-892E-4D0F-B5DA-A919C732AF07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50442357-EF99-4277-9104-FE5B2E2F4826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50442357-EF99-4277-9104-FE5B2E2F4826}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50442357-EF99-4277-9104-FE5B2E2F4826}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50442357-EF99-4277-9104-FE5B2E2F4826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD0DA0E-27C3-4D9D-A004-35E2747423E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD0DA0E-27C3-4D9D-A004-35E2747423E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD0DA0E-27C3-4D9D-A004-35E2747423E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD0DA0E-27C3-4D9D-A004-35E2747423E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,7 +71,7 @@ Global
 		{1CCA4C87-C4FA-4068-9988-B3A32882CBD8} = {12659DEA-DE36-4EEE-B0F8-5A5480FA9CC9}
 		{D97BD7BC-C050-4D35-82D5-93D3F063F44E} = {12659DEA-DE36-4EEE-B0F8-5A5480FA9CC9}
 		{0DEDF183-892E-4D0F-B5DA-A919C732AF07} = {12659DEA-DE36-4EEE-B0F8-5A5480FA9CC9}
-		{50442357-EF99-4277-9104-FE5B2E2F4826} = {12659DEA-DE36-4EEE-B0F8-5A5480FA9CC9}
+		{4BD0DA0E-27C3-4D9D-A004-35E2747423E4} = {12659DEA-DE36-4EEE-B0F8-5A5480FA9CC9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0A20035-C970-4A92-AF4B-386B68D38A96}
