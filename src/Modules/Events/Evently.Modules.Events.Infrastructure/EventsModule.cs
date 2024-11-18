@@ -24,8 +24,6 @@ public static class EventsModule
 {
     public static void MapEndpoints(IEndpointRouteBuilder app)
     {
-        // Register endpoints within EventsEndpoints
-        // injected into the app
         EventsEndpoints.MapEndpoints(app);
     }
 
