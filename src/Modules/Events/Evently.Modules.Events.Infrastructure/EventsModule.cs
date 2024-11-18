@@ -33,11 +33,12 @@ public static class EventsModule
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        // Resister MediatR from Application assembly
         services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(Application.AssemblyReference.Assembly);
         });
-
+        // Register FluentValidation from Application assembly
         services.AddValidatorsFromAssembly(
             Application.AssemblyReference.Assembly,
             includeInternalTypes: true);
@@ -67,11 +68,11 @@ public static class EventsModule
                     npgsqlOptions => npgsqlOptions
                         .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Events))
                 .UseSnakeCaseNamingConvention());
+        // Register IUnitOfWork for EntityFramework Core
+        services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<EventsDbContext>());
 
         services.AddScoped<IEventRepository, EventRepository>();
         services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
-
-        services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<EventsDbContext>());
     }
 }
