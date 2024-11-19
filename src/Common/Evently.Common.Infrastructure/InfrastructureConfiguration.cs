@@ -25,10 +25,13 @@ public static class InfrastructureConfiguration
         services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         IConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
+
         services.TryAddSingleton(connectionMultiplexer);
+
         services.AddStackExchangeRedisCache(options =>
             options.ConnectionMultiplexerFactory = () =>
             Task.FromResult(connectionMultiplexer));
+
         services.TryAddSingleton<ICacheService, CacheService>();
 
         return services;
