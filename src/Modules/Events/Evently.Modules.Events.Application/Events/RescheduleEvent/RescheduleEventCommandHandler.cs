@@ -1,5 +1,5 @@
-﻿using Evently.Common.Application.Clock;
-using Evently.Common.Application.Messaging;
+﻿using Evently.Common.Application.Abstractions.Clock;
+using Evently.Common.Application.Abstractions.Messaging;
 using Evently.Common.Domain.Abstractions.Results;
 using Evently.Modules.Events.Application.Abstractions.Data;
 using Evently.Modules.Events.Domain.Events;

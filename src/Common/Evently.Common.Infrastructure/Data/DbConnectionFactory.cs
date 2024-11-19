@@ -1,4 +1,4 @@
-﻿using Evently.Common.Application.Data;
+﻿using Evently.Common.Application.Abstractions.Data;
 using Npgsql;
 using System.Data.Common;
 

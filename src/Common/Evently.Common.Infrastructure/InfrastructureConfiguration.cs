@@ -1,5 +1,5 @@
-﻿using Evently.Common.Application.Clock;
-using Evently.Common.Application.Data;
+﻿using Evently.Common.Application.Abstractions.Clock;
+using Evently.Common.Application.Abstractions.Data;
 using Evently.Common.Infrastructure.Clock;
 using Evently.Common.Infrastructure.Data;
 using Microsoft.Extensions.DependencyInjection;

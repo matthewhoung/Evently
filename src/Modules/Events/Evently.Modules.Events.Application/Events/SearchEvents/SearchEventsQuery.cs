@@ -1,4 +1,4 @@
-﻿using Evently.Common.Application.Messaging;
+﻿using Evently.Common.Application.Abstractions.Messaging;
 
 namespace Evently.Modules.Events.Application.Events.SearchEvents;
 public sealed record class SearchEventsQuery(
