@@ -43,6 +43,11 @@ internal sealed class RequestLoggingPipelineBehavior<TRequest, TResponse>(
             return result;
         }
     }
-
+    #region GetModuleName Explanation
+    // because of our naming convention, for example, Evently.Modules.Events.Application
+    // we can extract the module name by splitting the request name by '.' and getting the third element
+    // which is the module name = "Events"
+    // there for we can use this method to get the module name
+    #endregion
     private static string GetModuleName(string requestName) => requestName.Split('.')[2];
 }
