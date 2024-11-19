@@ -10,8 +10,11 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.CustomSchemaIds(t => t.FullName?.Replace("+", "."));
 });
+
 builder.Services.AddApplication([Evently.Modules.Events.Application.AssemblyReference.Assembly]);
 builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("Database")!);
+
+builder.Configuration.AddModuleConfiguration(["events"]);// for new modules, add them here
 
 builder.Services.AddEventsModule(builder.Configuration);
 
