@@ -1,8 +1,11 @@
-﻿using Evently.Modules.Events.Domain.Abstractions;
+﻿using Evently.Common.Domain.Abstractions.DomainEvents;
 
 namespace Evently.Modules.Events.Domain.Events;
 
-public sealed class EventRescheduledDomainEvent(Guid eventId, DateTime startsAtUtc, DateTime? endsAtUtc)
+public sealed class EventRescheduledDomainEvent(
+    Guid eventId, 
+    DateTime startsAtUtc, 
+    DateTime? endsAtUtc)
     : DomainEvent
 {
     public Guid EventId { get; } = eventId;
