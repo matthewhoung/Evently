@@ -9,6 +9,7 @@ internal static class ConfigurationExtensios
         foreach (string module in modules)
         {
             configurationBuilder.AddJsonFile($"modules.{module}.json", false, true);
-            configurationBuilder.AddJsonFile($"modules.{module}.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true, true);
+            configurationBuilder.AddJsonFile($"modules.{module}.Development.json", true, true);
         }
+    }
 }
