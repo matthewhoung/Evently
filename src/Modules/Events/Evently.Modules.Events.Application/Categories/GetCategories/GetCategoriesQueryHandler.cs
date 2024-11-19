@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
 using Dapper;
+using Evently.Common.Application.Data;
 using Evently.Common.Application.Messaging;
 using Evently.Common.Domain.Abstractions.Results;
-using Evently.Modules.Events.Application.Abstractions.Data;
 using Evently.Modules.Events.Application.Categories.GetCategory;
 
 namespace Evently.Modules.Events.Application.Categories.GetCategories;

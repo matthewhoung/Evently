@@ -1,4 +1,4 @@
-﻿using Evently.Modules.Events.Domain.Abstractions;
+﻿using Evently.Common.Domain.Abstractions.Results;
 
 namespace Evently.Modules.Events.Presentation.ApiResults;
 public static class ResultExtensions
