@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Evently.Modules.Events.Presentation.Events;
-public class CreateEvent : IEndpoint
+internal sealed class CreateEvent : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
