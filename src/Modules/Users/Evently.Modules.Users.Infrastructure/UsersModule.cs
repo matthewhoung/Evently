@@ -23,9 +23,7 @@ public static class UsersModule
         return services;
     }
 
-    private static void AddInfrastructure(
-        this IServiceCollection services,
-        IConfiguration configuration)
+    private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<UsersDbContext>((sp, options) =>
             options
