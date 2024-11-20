@@ -21,7 +21,8 @@ internal sealed class RegisterUser : IEndpoint
                 request.LastName));
 
             return result.Match(Results.Ok, ApiResults.Problem);
-        });
+        })
+        .WithTags(Tags.Users);
     }
 
     internal sealed class Request
