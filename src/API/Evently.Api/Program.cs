@@ -22,15 +22,18 @@ builder.Services.AddSwaggerGen(options =>
     options.CustomSchemaIds(t => t.FullName?.Replace("+", "."));
 });
 
-builder.Services.AddApplication([Evently.Modules.Events.Application.AssemblyReference.Assembly]);
+builder.Services.AddApplication([
+    Evently.Modules.Events.Application.AssemblyReference.Assembly,
+    Evently.Modules.Users.Application.AssemblyReference.Assembly]);
 
 string databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
 string redisConnectionString = builder.Configuration.GetConnectionString("Cache")!;
+
 builder.Services.AddInfrastructure(
     databaseConnectionString,
     redisConnectionString);
 
-builder.Configuration.AddModuleConfiguration(["events", "users"]);// for new modules, add them here
+builder.Configuration.AddModuleConfiguration(["events", "users"]);
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(databaseConnectionString)
