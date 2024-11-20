@@ -4,7 +4,7 @@ using Evently.Modules.Users.Infrastructure.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Evently.Modules.Users.Infrastructure.Database;
-public sealed class UserDbContext(DbContextOptions<UserDbContext> options) : DbContext(options), IUnitOfWork
+public sealed class UsersDbContext(DbContextOptions<UsersDbContext> options) : DbContext(options), IUnitOfWork
 {
     internal DbSet<User> Users { get; set; }
 

@@ -3,7 +3,7 @@ using Evently.Modules.Users.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Evently.Modules.Users.Infrastructure.Users;
-internal sealed class UserRepository(UserDbContext context) : IUserRepository
+internal sealed class UserRepository(UsersDbContext context) : IUserRepository
 {
     public async Task<User?> GetAsync(Guid id, CancellationToken cancellationToken = default)
     {
