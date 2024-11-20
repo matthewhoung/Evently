@@ -18,23 +18,28 @@ public static class InfrastructureConfiguration
         string databaseConnectionString,
         string redisConnectionString)
     {
+        #region postgres connection register
         NpgsqlDataSource npgsqlDataSource = new NpgsqlDataSourceBuilder(databaseConnectionString).Build();
         services.TryAddSingleton(npgsqlDataSource);
+        #endregion
+        #region redis connection register
+        try
+        {
+            IConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
+            services.TryAddSingleton(connectionMultiplexer);
+
+            services.AddStackExchangeRedisCache(options =>
+                options.ConnectionMultiplexerFactory = () => Task.FromResult(connectionMultiplexer));
+        }
+        catch
+        {
+            services.AddDistributedMemoryCache();
+        }
+        #endregion
 
         services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
-
         services.TryAddSingleton<PublishDomainEventsInterceptor>();
-
         services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
-
-        IConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
-
-        services.TryAddSingleton(connectionMultiplexer);
-
-        services.AddStackExchangeRedisCache(options =>
-            options.ConnectionMultiplexerFactory = () =>
-            Task.FromResult(connectionMultiplexer));
-
         services.TryAddSingleton<ICacheService, CacheService>();
 
         return services;
