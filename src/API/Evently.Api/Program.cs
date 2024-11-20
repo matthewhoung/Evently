@@ -3,14 +3,17 @@ using Evently.Api.Middleware;
 using Evently.Common.Application;
 using Evently.Common.Infrastructure;
 using Evently.Modules.Events.Infrastructure;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
+#region Logging and Exceptions Handling
 builder.Host.UseSerilog((context, loggerConfig) => loggerConfig.ReadFrom.Configuration(context.Configuration));
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
+#endregion
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -19,12 +22,20 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddApplication([Evently.Modules.Events.Application.AssemblyReference.Assembly]);
+
+#region CORS Connection Configurations
+string databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
+string redisConnectionString = builder.Configuration.GetConnectionString("Cache")!;
 builder.Services.AddInfrastructure(
-    builder.Configuration.GetConnectionString("Database")!,
-    builder.Configuration.GetConnectionString("Cache")!);
+    databaseConnectionString,
+    redisConnectionString);
 
 builder.Configuration.AddModuleConfiguration(["events"]);// for new modules, add them here
 
+builder.Services.AddHealthChecks()
+    .AddNpgSql(databaseConnectionString)
+    .AddRedis(redisConnectionString);
+#endregion
 builder.Services.AddEventsModule(builder.Configuration);
 
 WebApplication app = builder.Build();
@@ -38,6 +49,11 @@ if (app.Environment.IsDevelopment())
 }
 
 EventsModule.MapEndpoints(app);
+
+app.MapHealthChecks("health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.UseSerilogRequestLogging();
 
