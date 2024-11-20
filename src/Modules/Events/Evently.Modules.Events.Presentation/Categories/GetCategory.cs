@@ -1,4 +1,5 @@
 ﻿using Evently.Common.Domain.Abstractions.Results;
+using Evently.Common.Presentation.EndPoints;
 using Evently.Modules.Events.Application.Categories.GetCategory;
 using Evently.Modules.Events.Presentation.ApiResults;
 using MediatR;
@@ -8,9 +9,9 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Evently.Modules.Events.Presentation.Categories;
 
-internal static class GetCategory
+internal class GetCategory : IEndpoint
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("categories/{id}", async (Guid id, ISender sender) =>
         {

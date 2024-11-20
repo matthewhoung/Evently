@@ -1,5 +1,6 @@
 ﻿using Evently.Common.Application.Caching;
 using Evently.Common.Domain.Abstractions.Results;
+using Evently.Common.Presentation.EndPoints;
 using Evently.Modules.Events.Application.Categories.GetCategories;
 using Evently.Modules.Events.Application.Categories.GetCategory;
 using Evently.Modules.Events.Presentation.ApiResults;
@@ -10,9 +11,9 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Evently.Modules.Events.Presentation.Categories;
 
-internal static class GetCategories
+internal class GetCategories : IEndpoint
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("categories", async (ISender sender, ICacheService cacheService) =>
         {
