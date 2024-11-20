@@ -1,4 +1,5 @@
 ﻿using Evently.Common.Infrastructure.Interceptors;
+using Evently.Common.Presentation.EndPoints;
 using Evently.Modules.Users.Application.Abstractions.Data;
 using Evently.Modules.Users.Domain.Users;
 using Evently.Modules.Users.Infrastructure.Database;
@@ -16,6 +17,8 @@ public static class UsersModule
         IConfiguration configuration)
     {
         services.AddInfrastructure(configuration);
+
+        services.AddEndpoints(Presentation.AssemblyReference.Assembly);
 
         return services;
     }
