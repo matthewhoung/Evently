@@ -1,5 +1,5 @@
 ﻿using Evently.Common.Domain.Abstractions.DomainEvents;
-using Evently.Common.Domain.Abstractions.Results;
+using Evently.Common.Domain.Abstractions.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;

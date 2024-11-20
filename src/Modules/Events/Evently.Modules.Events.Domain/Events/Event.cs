@@ -1,4 +1,5 @@
-﻿using Evently.Common.Domain.Abstractions.Results;
+﻿using Evently.Common.Domain.Abstractions.Entities;
+using Evently.Common.Domain.Abstractions.Results;
 using Evently.Modules.Events.Domain.Categories;
 
 namespace Evently.Modules.Events.Domain.Events;

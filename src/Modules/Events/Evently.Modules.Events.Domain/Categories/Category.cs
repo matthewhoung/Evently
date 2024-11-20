@@ -1,4 +1,4 @@
-﻿using Evently.Common.Domain.Abstractions.Results;
+﻿using Evently.Common.Domain.Abstractions.Entities;
 
 namespace Evently.Modules.Events.Domain.Categories;
 public sealed class Category : Entity

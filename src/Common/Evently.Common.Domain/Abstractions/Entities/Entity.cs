@@ -1,6 +1,6 @@
 ﻿using Evently.Common.Domain.Abstractions.DomainEvents;
 
-namespace Evently.Common.Domain.Abstractions.Results;
+namespace Evently.Common.Domain.Abstractions.Entities;
 
 public abstract class Entity
 {
