@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Evently.Common.Presentation.EndPoints;
 
 namespace Evently.Modules.Ticketing.Infrastructure;
 
