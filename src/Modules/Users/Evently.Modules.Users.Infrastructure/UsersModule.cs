@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Evently.Modules.Users.Infrastructure;
 public static class UsersModule
 {
-    public static IServiceCollection AddUserModule(
+    public static IServiceCollection AddUsersModule(
         this IServiceCollection services,
         IConfiguration configuration)
     {
