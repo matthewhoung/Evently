@@ -19,5 +19,6 @@ public static class TicketingModule
 
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        // implement later
     }
 }
