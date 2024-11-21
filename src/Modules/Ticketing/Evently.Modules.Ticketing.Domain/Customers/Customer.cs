@@ -2,22 +2,22 @@
 
 namespace Evently.Modules.Ticketing.Domain.Custormers;
 
-public sealed class Custormer : Entity
+public sealed class Customer : Entity
 {
     public Guid Id { get; private set; }
     public string Email { get; private set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
 
-    private Custormer() { }
+    private Customer() { }
 
-    public static Custormer Create(
+    public static Customer Create(
         Guid id,
         string email,
         string firstName,
         string lastName)
     {
-        return new Custormer
+        return new Customer
         {
             Id = id,
             Email = email,
