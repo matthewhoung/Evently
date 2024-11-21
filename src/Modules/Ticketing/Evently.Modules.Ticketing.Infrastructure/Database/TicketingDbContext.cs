@@ -1,4 +1,5 @@
-﻿using Evently.Modules.Ticketing.Application.Abstractions.Data;
+﻿using System.Data.Common;
+using Evently.Modules.Ticketing.Application.Abstractions.Data;
 using Evently.Modules.Ticketing.Domain.Custormers;
 using Evently.Modules.Ticketing.Domain.Events;
 using Evently.Modules.Ticketing.Domain.Orders;
@@ -12,6 +13,7 @@ using Evently.Modules.Ticketing.Infrastructure.Payments;
 using Evently.Modules.Ticketing.Infrastructure.Tickets;
 using Evently.Modules.Ticketing.Infrastructure.TicketTypes;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Evently.Modules.Ticketing.Infrastructure.Database;
 public sealed class TicketingDbContext(DbContextOptions<TicketingDbContext> options)
@@ -24,6 +26,16 @@ public sealed class TicketingDbContext(DbContextOptions<TicketingDbContext> opti
     internal DbSet<OrderItem> OrderItems { get; set; }
     internal DbSet<Ticket> Tickets { get; set; }
     internal DbSet<Payment> Payments { get; set; }
+
+    public async Task<DbTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        if (Database.CurrentTransaction is not null)
+        {
+            await Database.CurrentTransaction.DisposeAsync();
+        }
+
+        return (await Database.BeginTransactionAsync(cancellationToken)).GetDbTransaction();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

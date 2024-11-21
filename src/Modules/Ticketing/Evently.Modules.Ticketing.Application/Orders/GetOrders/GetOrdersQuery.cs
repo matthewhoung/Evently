@@ -1,4 +1,5 @@
 ﻿using Evently.Common.Application.Abstractions.Messaging;
+using Evently.Modules.Ticketing.Domain.Orders;
 
 namespace Evently.Modules.Ticketing.Application.Orders.GetOrders;
 
