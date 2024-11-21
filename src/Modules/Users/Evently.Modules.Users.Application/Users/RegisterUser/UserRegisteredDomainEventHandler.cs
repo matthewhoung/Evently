@@ -21,7 +21,9 @@ internal sealed class UserRegisteredDomainEventHandler(
         {
             throw new EventlyException(nameof(GetUserQuery), result.Error);
         }
-
+        // masstransit will publish out the event of the user created evnet
+        // then any service that is listening on this event will be able to consume the data that is published
+        // for exampl: UserRegisteredIntegrationEventConsumer
         await eventBus.PublishAsync(
             new UserRegisteredIntegrationEvent(
                 notification.Id,

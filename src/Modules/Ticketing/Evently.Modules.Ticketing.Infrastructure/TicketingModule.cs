@@ -16,6 +16,8 @@ using Evently.Modules.Ticketing.Infrastructure.Orders;
 using Evently.Modules.Ticketing.Infrastructure.Payments;
 using Evently.Modules.Ticketing.Infrastructure.Tickets;
 using Evently.Modules.Ticketing.Infrastructure.TicketTypes;
+using Evently.Modules.Ticketing.Presentation.Customers;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
@@ -34,6 +36,11 @@ public static class TicketingModule
         services.AddEndpoints(Presentation.AssemblyReference.Assembly);
 
         return services;
+    }
+
+    public static void ConfigureConsumers(IRegistrationConfigurator registrationConfigurator)
+    {
+        registrationConfigurator.AddConsumer<UserRegisteredIntegrationEventConsumer>();
     }
 
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
