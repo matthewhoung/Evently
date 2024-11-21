@@ -40,6 +40,8 @@ public sealed class Event : Entity
     {
         StartsAtUtc = startsAtUtc;
         EndsAtUtc = endsAtUtc;
+
+        Raise(new EventRescheduledDomainEvent(Id, startsAtUtc, endsAtUtc));
     }
 
     public void Cancel()
@@ -50,5 +52,7 @@ public sealed class Event : Entity
         }
 
         Canceled = true;
+
+        Raise(new EventCanceledDomainEvent(Id));
     }
 }
