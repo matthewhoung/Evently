@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Evently.Common.Application.Abstractions.Messaging;
+using Evently.Common.Application.Messaging;
 using Evently.Common.Domain.Abstractions.Errors;
 using Evently.Common.Domain.Abstractions.Results;
 using FluentValidation;

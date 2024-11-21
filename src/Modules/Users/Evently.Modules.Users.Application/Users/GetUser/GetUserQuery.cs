@@ -1,4 +1,4 @@
-﻿using Evently.Common.Application.Abstractions.Messaging;
+﻿using Evently.Common.Application.Messaging;
 
 namespace Evently.Modules.Users.Application.Users.GetUser;
 public sealed record class GetUserQuery(Guid UserId) : IQuery<UserResponse>;

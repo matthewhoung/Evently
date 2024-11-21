@@ -1,4 +1,4 @@
-﻿using Evently.Common.Application.Abstractions.Clock;
+﻿using Evently.Common.Application.Clock;
 
 namespace Evently.Common.Infrastructure.Clock;
 

@@ -1,5 +1,5 @@
 ﻿using System.Data.Common;
-using Evently.Common.Application.Abstractions.Messaging;
+using Evently.Common.Application.Messaging;
 using Evently.Common.Domain.Abstractions.Results;
 using Evently.Modules.Ticketing.Application.Abstractions.Data;
 using Evently.Modules.Ticketing.Application.Abstractions.Payments;

@@ -1,4 +1,4 @@
-﻿using Evently.Common.Application.Abstractions.Messaging;
+﻿using Evently.Common.Application.Messaging;
 using Evently.Common.Domain.Abstractions.Results;
 
 namespace Evently.Modules.Ticketing.Application.Carts.GetCart;
