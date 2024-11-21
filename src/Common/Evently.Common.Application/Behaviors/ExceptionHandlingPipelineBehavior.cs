@@ -1,4 +1,4 @@
-﻿using Evently.Common.Application.Abstractions.Exceptions;
+﻿using Evently.Common.Application.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
