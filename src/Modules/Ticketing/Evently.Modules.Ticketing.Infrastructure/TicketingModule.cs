@@ -5,11 +5,13 @@ using Evently.Modules.Ticketing.Application.Carts;
 using Evently.Modules.Ticketing.Domain.Custormers;
 using Evently.Modules.Ticketing.Domain.Events;
 using Evently.Modules.Ticketing.Domain.Orders;
+using Evently.Modules.Ticketing.Domain.Tickets;
 using Evently.Modules.Ticketing.Domain.TicketTypes;
 using Evently.Modules.Ticketing.Infrastructure.Custormers;
 using Evently.Modules.Ticketing.Infrastructure.Database;
 using Evently.Modules.Ticketing.Infrastructure.Events;
 using Evently.Modules.Ticketing.Infrastructure.Orders;
+using Evently.Modules.Ticketing.Infrastructure.Tickets;
 using Evently.Modules.Ticketing.Infrastructure.TicketTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -46,6 +48,7 @@ public static class TicketingModule
         services.AddScoped<IEventRepository, EventRepository>();
         services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<ITicketRepository, TicketRepository>();
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<TicketingDbContext>());
         services.AddSingleton<CartService>();

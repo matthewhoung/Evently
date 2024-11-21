@@ -2,10 +2,12 @@
 using Evently.Modules.Ticketing.Domain.Custormers;
 using Evently.Modules.Ticketing.Domain.Events;
 using Evently.Modules.Ticketing.Domain.Orders;
+using Evently.Modules.Ticketing.Domain.Tickets;
 using Evently.Modules.Ticketing.Domain.TicketTypes;
 using Evently.Modules.Ticketing.Infrastructure.Custormers;
 using Evently.Modules.Ticketing.Infrastructure.Events;
 using Evently.Modules.Ticketing.Infrastructure.Orders;
+using Evently.Modules.Ticketing.Infrastructure.Tickets;
 using Evently.Modules.Ticketing.Infrastructure.TicketTypes;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +20,7 @@ public sealed class TicketingDbContext(DbContextOptions<TicketingDbContext> opti
     internal DbSet<TicketType> TicketTypes { get; set; }
     internal DbSet<Order> Orders { get; set; }
     internal DbSet<OrderItem> OrderItems { get; set; }
+    internal DbSet<Ticket> Tickets { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -28,5 +31,6 @@ public sealed class TicketingDbContext(DbContextOptions<TicketingDbContext> opti
         modelBuilder.ApplyConfiguration(new TicketTypeConfiguration());
         modelBuilder.ApplyConfiguration(new OrderConfiguration());
         modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
+        modelBuilder.ApplyConfiguration(new TicketConfiguration());
     }
 }
