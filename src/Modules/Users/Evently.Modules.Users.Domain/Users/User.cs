@@ -15,18 +15,18 @@ public sealed class User : Entity
     }
 
     public static User Create(
-        string identityId,
         string email,
         string firstName,
-        string lastName)
+        string lastName,
+        string identityId)
     {
         var user = new User
         {
             Id = Guid.NewGuid(),
-            IdentityId = identityId,
             Email = email,
             FirstName = firstName,
-            LastName = lastName
+            LastName = lastName,
+            IdentityId = identityId
         };
 
         user.Raise(new UserRegisteredDomainEvent(user.Id));
