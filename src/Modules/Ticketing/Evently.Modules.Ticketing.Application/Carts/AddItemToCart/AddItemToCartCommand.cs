@@ -7,9 +7,9 @@ public sealed record class AddItemToCartCommand(
     Guid TicketTypeId,
     decimal Quantity) : ICommand;
 
-internal sealed class AddItemToCartCommandValidation : AbstractValidator<AddItemToCartCommand>
+internal sealed class AddItemToCartCommandValidator : AbstractValidator<AddItemToCartCommand>
 {
-    public AddItemToCartCommandValidation()
+    public AddItemToCartCommandValidator()
     {
         RuleFor(c => c.CustomerId).NotEmpty();
         RuleFor(c => c.TicketTypeId).NotEmpty();
