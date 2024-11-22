@@ -40,17 +40,3 @@ internal sealed class IdentityProviderService(
         }
     }
 }
-
-internal sealed record UserRepresentation(
-    string Username,
-    string Eamil,
-    string FirstName,
-    string LastName,
-    bool EmailVerified,
-    bool Enabled,
-    CredentialRepresentation[] Credentials);
-
-internal sealed record CredentialRepresentation(
-    string Type,
-    string Value,
-    bool Temporary);
