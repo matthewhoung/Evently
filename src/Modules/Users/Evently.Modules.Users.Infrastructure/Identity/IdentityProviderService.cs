@@ -4,16 +4,12 @@ using Evently.Modules.Users.Application.Abstractions.Identity;
 using Microsoft.Extensions.Logging;
 
 namespace Evently.Modules.Users.Infrastructure.Identity;
-internal sealed class IdentityProviderService(
-    KeyCloakClient keyCloakClient,
-    ILogger<IdentityProviderService> logger) 
+internal sealed class IdentityProviderService(KeyCloakClient keyCloakClient, ILogger<IdentityProviderService> logger)
     : IIdentityProviderService
 {
     private const string PasswordCredentialType = "Password";
-    // POST /admin/realms/{realm}/users
-    public async Task<Result<string>> RegisterUserAsync(
-        UserModel user, 
-        CancellationToken cancellationToken = default)
+
+    public async Task<Result<string>> RegisterUserAsync(UserModel user, CancellationToken cancellationToken = default)
     {
         var userRepresentation = new UserRepresentation(
             user.Email,
@@ -24,15 +20,13 @@ internal sealed class IdentityProviderService(
             true,
             [new CredentialRepresentation(PasswordCredentialType, user.Password, false)]);
 
-        // Call Keycloak API to create a new user
         try
         {
             string identityId = await keyCloakClient.RegisterUserAsync(userRepresentation, cancellationToken);
 
             return identityId;
         }
-        catch (HttpRequestException exception) 
-        when (exception.StatusCode == HttpStatusCode.Conflict)
+        catch (HttpRequestException exception) when (exception.StatusCode == HttpStatusCode.Conflict)
         {
             logger.LogError(exception, "User registration failed");
 

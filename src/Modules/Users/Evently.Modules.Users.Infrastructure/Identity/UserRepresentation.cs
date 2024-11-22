@@ -2,7 +2,7 @@
 
 internal sealed record UserRepresentation(
     string Username,
-    string Eamil,
+    string Email,
     string FirstName,
     string LastName,
     bool EmailVerified,
