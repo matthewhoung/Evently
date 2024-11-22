@@ -2,7 +2,7 @@
 using FluentValidation;
 
 namespace Evently.Modules.Events.Application.Events.RescheduleEvent;
-public record class RescheduleEventCommand(
+public sealed record class RescheduleEventCommand(
     Guid EventId, 
     DateTime StartsAtUtc,
     DateTime? EndsAtUtc) : ICommand;
