@@ -23,6 +23,7 @@ internal sealed class RescheduleEvent : IEndpoint
 
             return result.Match(Results.NoContent, ApiResults.ApiResults.Problem);
         })
+        .RequireAuthorization()
         .WithTags(Tags.Events);
     }
 
