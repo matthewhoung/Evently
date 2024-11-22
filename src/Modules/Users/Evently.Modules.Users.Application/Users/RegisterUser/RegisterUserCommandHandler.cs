@@ -11,16 +11,10 @@ internal sealed class RegisterUserCommandHandler(
     IUnitOfWork unitOfWork)
     : ICommandHandler<RegisterUserCommand, Guid>
 {
-    public async Task<Result<Guid>> Handle(
-        RegisterUserCommand request, 
-        CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
         Result<string> result = await identityProviderService.RegisterUserAsync(
-            new UserModel(
-                request.Email,
-                request.Password,
-                request.FirstName,
-                request.LastName),
+            new UserModel(request.Email, request.Password, request.FirstName, request.LastName),
             cancellationToken);
 
         if (result.IsFailure)
@@ -28,11 +22,7 @@ internal sealed class RegisterUserCommandHandler(
             return Result.Failure<Guid>(result.Error);
         }
 
-        var user = User.Create(
-            result.Value,
-            request.Email,
-            request.FirstName,
-            request.LastName);
+        var user = User.Create(request.Email, request.FirstName, request.LastName, result.Value);
 
         userRepository.Insert(user);
 
