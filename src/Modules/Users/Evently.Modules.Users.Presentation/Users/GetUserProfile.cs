@@ -4,6 +4,7 @@ using Evently.Common.Infrastructure.Authentication;
 using Evently.Common.Presentation.EndPoints;
 using Evently.Modules.Events.Presentation.ApiResults;
 using Evently.Modules.Users.Application.Users.GetUser;
+using Evently.Modules.Users.Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -22,7 +23,7 @@ internal sealed class GetUserProfile : IEndpoint
                 Results.Ok,
                 ApiResults.Problem);
         })
-        .RequireAuthorization("users:read")
+        .RequireAuthorization(Permission.GetUser.Code)
         .WithTags(Tags.Users);
     }
 }
