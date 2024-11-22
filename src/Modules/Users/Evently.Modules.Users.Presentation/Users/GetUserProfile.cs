@@ -20,6 +20,7 @@ internal sealed class GetUserProfile : IEndpoint
                 Results.Ok,
                 ApiResults.Problem);
         })
+        .RequireAuthorization()
         .WithTags(Tags.Users);
     }
 }
