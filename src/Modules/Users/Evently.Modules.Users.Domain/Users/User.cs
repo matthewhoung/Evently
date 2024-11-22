@@ -9,6 +9,8 @@ public sealed class User : Entity
     public string Email { get; private set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
+    public IReadOnlyCollection<Role> Roles => _roles.ToList();
+    private readonly List<Role> _roles =  [];
 
     private User()
     {
@@ -28,6 +30,8 @@ public sealed class User : Entity
             LastName = lastName,
             IdentityId = identityId
         };
+
+        user._roles.Add(Role.Member);
 
         user.Raise(new UserRegisteredDomainEvent(user.Id));
 
