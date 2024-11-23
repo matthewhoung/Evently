@@ -4,13 +4,13 @@ using Evently.Common.Infrastructure.Authentication;
 using Evently.Common.Presentation.EndPoints;
 using Evently.Modules.Events.Presentation.ApiResults;
 using Evently.Modules.Users.Application.Users.GetUser;
-using Evently.Modules.Users.Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Evently.Modules.Users.Presentation.Users;
+
 internal sealed class GetUserProfile : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
@@ -19,11 +19,9 @@ internal sealed class GetUserProfile : IEndpoint
         {
             Result<UserResponse> result = await sender.Send(new GetUserQuery(claims.GetUserId()));
 
-            return result.Match(
-                Results.Ok,
-                ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization(Permission.GetUser.Code)
+        .RequireAuthorization(Permissions.GetUser)
         .WithTags(Tags.Users);
     }
 }
