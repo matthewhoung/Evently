@@ -9,25 +9,27 @@ using MediatR;
 
 namespace Evently.Modules.Users.Application.Users.RegisterUser;
 internal sealed class UserRegisteredDomainEventHandler(
-    ISender sender,
-    IEventBus eventBus)
-    : IDomainEventHandler<UserRegisteredDomainEvent>
+    ISender sender, 
+    IEventBus bus)
+    : DomainEventHandler<UserRegisteredDomainEvent>
 {
-    public async Task Handle(UserRegisteredDomainEvent notification, CancellationToken cancellationToken)
+    public override async Task Handle(
+        UserRegisteredDomainEvent domainEvent,
+        CancellationToken cancellationToken = default)
     {
-        Result<UserResponse> result = await sender.Send(new GetUserQuery(notification.UserId), cancellationToken);
+        Result<UserResponse> result = await sender.Send(
+            new GetUserQuery(domainEvent.UserId),
+            cancellationToken);
 
         if (result.IsFailure)
         {
             throw new EventlyException(nameof(GetUserQuery), result.Error);
         }
-        // masstransit will publish out the event of the user created evnet
-        // then any service that is listening on this event will be able to consume the data that is published
-        // for exampl: UserRegisteredIntegrationEventConsumer
-        await eventBus.PublishAsync(
+
+        await bus.PublishAsync(
             new UserRegisteredIntegrationEvent(
-                notification.Id,
-                notification.OccurredOnUtc,
+                domainEvent.Id,
+                domainEvent.OccurredOnUtc,
                 result.Value.Id,
                 result.Value.Email,
                 result.Value.FirstName,
