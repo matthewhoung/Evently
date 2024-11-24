@@ -3,6 +3,7 @@ using Evently.Modules.Ticketing.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Evently.Modules.Ticketing.Infrastructure.Orders;
+
 internal sealed class OrderRepository(TicketingDbContext context) : IOrderRepository
 {
     public async Task<Order?> GetAsync(Guid id, CancellationToken cancellationToken = default)
