@@ -4,7 +4,7 @@ using Dapper;
 using Evently.Common.Application.Clock;
 using Evently.Common.Application.Data;
 using Evently.Common.Application.Messaging;
-using Evently.Common.Domain;
+using Evently.Common.Domain.Abstractions.DomainEvents;
 using Evently.Common.Infrastructure.Outbox;
 using Evently.Common.Infrastructure.Serialization;
 using Microsoft.Extensions.DependencyInjection;

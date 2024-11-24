@@ -1,6 +1,6 @@
 ﻿using Evently.Common.Domain.Abstractions.Results;
 using Evently.Common.Presentation.EndPoints;
-using Evently.Modules.Events.Presentation.ApiResults;
+using Evently.Common.Presentation.Results;
 using Evently.Modules.Ticketing.Application.Abstractions.Authentication;
 using Evently.Modules.Ticketing.Application.Carts.RemoveItemFromCart;
 using MediatR;

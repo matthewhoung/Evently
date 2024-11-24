@@ -1,7 +1,7 @@
 ﻿using Evently.Common.Domain.Abstractions.Results;
 using Evently.Common.Presentation.EndPoints;
+using Evently.Common.Presentation.Results;
 using Evently.Modules.Events.Application.TicketTypes.CreateTicketType;
-using Evently.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -22,7 +22,7 @@ internal sealed class CreateTicketType : IEndpoint
                 request.Currency,
                 request.Quantity));
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
         })
         .RequireAuthorization()
         .WithTags(Tags.TicketTypes);

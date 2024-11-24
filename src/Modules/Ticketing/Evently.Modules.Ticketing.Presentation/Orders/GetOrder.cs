@@ -1,6 +1,6 @@
 ﻿using Evently.Common.Domain.Abstractions.Results;
 using Evently.Common.Presentation.EndPoints;
-using Evently.Modules.Events.Presentation.ApiResults;
+using Evently.Common.Presentation.Results;
 using Evently.Modules.Ticketing.Application.Orders.GetOrder;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -19,7 +19,7 @@ internal sealed class GetOrder : IEndpoint
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization()
+        .RequireAuthorization(Permissions.GetOrders)
         .WithTags(Tags.Orders);
     }
 }

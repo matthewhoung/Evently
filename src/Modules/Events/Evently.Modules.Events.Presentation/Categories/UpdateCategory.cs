@@ -1,7 +1,7 @@
 ﻿using Evently.Common.Domain.Abstractions.Results;
 using Evently.Common.Presentation.EndPoints;
+using Evently.Common.Presentation.Results;
 using Evently.Modules.Events.Application.Categories.UpdateCategory;
-using Evently.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -17,9 +17,9 @@ internal sealed class UpdateCategory : IEndpoint
         {
             Result result = await sender.Send(new UpdateCategoryCommand(id, request.Name));
 
-            return result.Match(() => Results.Ok(), ApiResults.ApiResults.Problem);
+            return result.Match(() => Results.Ok(), ApiResults.Problem);
         })
-        .RequireAuthorization()
+        .RequireAuthorization(Permissions.ModifyCategories)
         .WithTags(Tags.Categories);
     }
 

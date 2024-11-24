@@ -1,7 +1,8 @@
-﻿using Evently.Common.Domain.Abstractions.Results;
+﻿using Evently.Common.Domain;
+using Evently.Common.Domain.Abstractions.Results;
 using Evently.Common.Presentation.EndPoints;
+using Evently.Common.Presentation.Results;
 using Evently.Modules.Events.Application.Events.RescheduleEvent;
-using Evently.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -16,14 +17,11 @@ internal sealed class RescheduleEvent : IEndpoint
         app.MapPut("events/{id}/reschedule", async (Guid id, Request request, ISender sender) =>
         {
             Result result = await sender.Send(
-                new RescheduleEventCommand(
-                    id,
-                    request.StartsAtUtc,
-                    request.EndsAtUtc));
+                new RescheduleEventCommand(id, request.StartsAtUtc, request.EndsAtUtc));
 
-            return result.Match(Results.NoContent, ApiResults.ApiResults.Problem);
+            return result.Match(Results.NoContent, ApiResults.Problem);
         })
-        .RequireAuthorization()
+        .RequireAuthorization(Permissions.ModifyEvents)
         .WithTags(Tags.Events);
     }
 

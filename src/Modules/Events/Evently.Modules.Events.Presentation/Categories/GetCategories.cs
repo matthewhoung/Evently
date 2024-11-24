@@ -1,9 +1,9 @@
 ﻿using Evently.Common.Application.Caching;
 using Evently.Common.Domain.Abstractions.Results;
 using Evently.Common.Presentation.EndPoints;
+using Evently.Common.Presentation.Results;
 using Evently.Modules.Events.Application.Categories.GetCategories;
 using Evently.Modules.Events.Application.Categories.GetCategory;
-using Evently.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -32,9 +32,9 @@ internal sealed class GetCategories : IEndpoint
                 await cacheService.SetAsync("categories", result.Value);
             }
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization()
+        .RequireAuthorization(Permissions.GetCategories)
         .WithTags(Tags.Categories);
     }
 }

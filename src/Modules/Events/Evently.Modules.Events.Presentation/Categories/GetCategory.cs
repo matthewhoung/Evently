@@ -1,7 +1,7 @@
 ﻿using Evently.Common.Domain.Abstractions.Results;
 using Evently.Common.Presentation.EndPoints;
+using Evently.Common.Presentation.Results;
 using Evently.Modules.Events.Application.Categories.GetCategory;
-using Evently.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -17,9 +17,9 @@ internal sealed class GetCategory : IEndpoint
         {
             Result<CategoryResponse> result = await sender.Send(new GetCategoryQuery(id));
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization()
+        .RequireAuthorization(Permissions.GetCategories)
         .WithTags(Tags.Categories);
     }
 }

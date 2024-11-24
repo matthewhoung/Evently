@@ -2,7 +2,7 @@
 using Evently.Common.Domain.Abstractions.Results;
 using Evently.Common.Infrastructure.Authentication;
 using Evently.Common.Presentation.EndPoints;
-using Evently.Modules.Events.Presentation.ApiResults;
+using Evently.Common.Presentation.Results;
 using Evently.Modules.Users.Application.Users.UpdateUser;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
